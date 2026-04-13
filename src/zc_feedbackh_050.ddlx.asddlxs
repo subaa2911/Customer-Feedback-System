@@ -1,0 +1,57 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Feedback',
+    typeNamePlural: 'Customer Feedbacks',
+    title: { type: #STANDARD, label: 'Customer Name', value: 'CustomerName' }
+  }
+}
+annotate view ZC_FEEDBACKH_050 with
+{
+  @UI.facet: [
+    { id: 'HeaderInfo',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'General Information',
+      position: 10 },
+    { id: 'ItemsInfo',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Feedback Details',
+      position: 20,
+      targetElement: '_Items' }
+  ]
+
+  @UI.hidden: true
+  FeedbackUUID;
+
+  @UI: { lineItem:       [ { position: 10, label: 'Customer ID' } ],
+         identification: [ { position: 10, label: 'Customer ID' } ],
+         selectionField: [ { position: 10 } ] }
+  CustomerID;
+
+  @UI: { lineItem:       [ { position: 20, label: 'Customer Name' } ],
+         identification: [ { position: 20, label: 'Customer Name' } ],
+         selectionField: [ { position: 20 } ] }
+  CustomerName;
+
+  @UI: { lineItem:       [ { position: 30, label: 'Overall Rating' } ],
+         identification: [ { position: 30, label: 'Overall Rating' } ] }
+  OverallRating;
+
+  @UI: { lineItem:       [ { position: 40, label: 'Created By' } ],
+         identification: [ { position: 40, label: 'Created By' } ] }
+  CreatedBy;
+
+  @UI: { lineItem:       [ { position: 50, label: 'Created At' } ],
+         identification: [ { position: 50, label: 'Created At' } ] }
+  CreatedAt;
+
+  @UI: { lineItem:       [ { position: 60, label: 'Last Changed By' } ],
+         identification: [ { position: 60, label: 'Last Changed By' } ] }
+  LastChangedBy;
+
+  @UI: { lineItem:       [ { position: 70, label: 'Last Changed At' } ],
+         identification: [ { position: 70, label: 'Last Changed At' } ] }
+  LastChangedAt;
+}

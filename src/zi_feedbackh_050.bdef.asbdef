@@ -1,0 +1,39 @@
+unmanaged implementation in class zbp_i_feedback_050 unique;
+strict ( 2 );
+with draft; // Required for Draft support
+
+define behavior for ZI_FeedbackH_050 alias Feedback
+draft table zfeedh_d_050
+lock master
+total etag LastChangedAt
+authorization master ( global )
+{
+  create;
+  update;
+  delete;
+
+  association _Items { create; with draft; }
+
+  field ( readonly, numbering : managed ) FeedbackUUID;
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+}
+
+define behavior for ZI_FeedbackI_050 alias Items
+draft table zfeedi_d_050 // System will generate this
+lock dependent by _Header
+authorization dependent by _Header
+{
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) ItemUUID;
+  field ( readonly ) ParentUUID;
+
+  association _Header { with draft; }
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition'
+define service ZUI_FEEDBACK_050 {
+  expose ZC_FEEDBACKH_050 as Header;
+  expose ZC_FEEDBACKI_050 as Items;
+}

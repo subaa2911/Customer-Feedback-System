@@ -1,0 +1,36 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Detail',
+    typeNamePlural: 'Feedback Details',
+    title: { type: #STANDARD, value: 'Category' }
+  }
+}
+annotate view ZC_FEEDBACKI_050 with
+{
+  @UI.facet: [
+    { id: 'ItemDetails',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Aspect Details',
+      position: 10 }
+  ]
+
+  @UI.hidden: true
+  ItemUUID;
+
+  @UI.hidden: true
+  ParentUUID;
+
+  @UI: { lineItem:       [ { position: 10, label: 'Category' } ],
+         identification: [ { position: 10, label: 'Category' } ] }
+  Category;
+
+  @UI: { lineItem:       [ { position: 20, label: 'Rating' } ],
+         identification: [ { position: 20, label: 'Rating' } ] }
+  Rating;
+
+  @UI: { lineItem:       [ { position: 30, label: 'Comments' } ],
+         identification: [ { position: 30, label: 'Comments' } ] }
+  Remarks;
+}
